@@ -1,56 +1,45 @@
-# To-Do List Application with Sample Tasks
+# Printing Title starting point
+print("To Do List") 
 
-def display_menu():
-    print("\nTo-Do List Menu")
-    print("1. View To-Do List")
-    print("2. Remove Task")
-    print("3. Exit")
+# Declare variable
+list = []
 
-def view_todo_list(todo_list):
-    if not todo_list:
-        print("\nYour to-do list is empty.")
+# Option choosing
+def options():
+    print("""
+Options :
+    1. Display
+    2. Add Task
+    3. Complete Task
+    4. Quit
+          """)
+# Display existing List
+def display():
+    print("\nTO DO LIST :")
+    number = 0
+    for task in list:
+        number+=1
+        print(f"{number}. {task}")
+
+# Add new task
+def AddTask():
+    task = input("New Task: ")
+    list.append(task)
+    
+# Mark list
+def Pop():
+    completed = int(input("Enter The Task Number : "))
+    list.pop(completed-1)
+
+# Looping the system
+while True:
+    options()
+    choice = int(input("Choosing : "))
+    if choice == 1:
+        display()
+    elif choice == 2:
+        AddTask()
+    elif choice == 3:
+        Pop()
     else:
-        print("\nYour To-Do List:")
-        for i, task in enumerate(todo_list, 1):
-            print(f"{i}. {task}")
-
-def remove_task(todo_list):
-    view_todo_list(todo_list)
-    if todo_list:
-        try:
-            task_number = int(input("\nEnter the number of the task to remove: "))
-            if 1 <= task_number <= len(todo_list):
-                removed_task = todo_list.pop(task_number - 1)
-                print(f"Task '{removed_task}' removed from the list.")
-                view_todo_list(todo_list)
-            else:
-                print("Invalid task number. Please try again.")
-        except ValueError:
-            print("Please enter a valid number.")
-
-def main():
-    # Sample tasks
-    todo_list = [
-        "Buy groceries",
-        "Read a book",
-        "Write code",
-        "Go for a walk",
-        "Call a friend"
-    ]
-
-    while True:
-        display_menu()
-        choice = input("\nEnter your choice: ")
-
-        if choice == "1":
-            view_todo_list(todo_list)
-        elif choice == "2":
-            remove_task(todo_list)
-        elif choice == "3":
-            print("Exiting To-Do List Application. Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please try again.")
-
-if __name__ == "__main__":
-    main()
+        break
