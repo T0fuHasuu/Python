@@ -1,8 +1,9 @@
+# Module checks the missing package
 import sys
 import subprocess
 import pkg_resources
 
-# Define the required libraries
+# Define required libraries
 required = {'sounddevice', 'scipy', 'wavio'}
 installed = {pkg.key for pkg in pkg_resources.working_set}
 missing = required - installed
@@ -13,7 +14,7 @@ if missing:
     python = sys.executable
     subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 
-# Import the libraries after installation
+# Import the required library
 import sounddevice as sd
 from scipy.io.wavfile import write
 import wavio as wv
@@ -34,7 +35,6 @@ recording = sd.rec(int(duration * freq), samplerate=freq, channels=channels)
 sd.wait()
 
 # Save the recording to a file
-write("recording0.wav", freq, recording)
 wv.write("recording1.wav", recording, freq, sampwidth=2)
 
 # Play the recording using sounddevice
