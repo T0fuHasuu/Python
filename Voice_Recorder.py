@@ -23,7 +23,7 @@ import wavio as wv
 freq = 48000  
 
 # Recording duration
-duration = 20
+duration = 5
 
 # Reduce channels to 1 for mono recording
 channels = 1
