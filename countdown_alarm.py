@@ -1,34 +1,46 @@
+# Import and set as 
 import tkinter as tk
 import time
 
+# Countdown Function
 def countdown(t):
-    # Convert time to minutes and seconds
+    # Max second with 60
     mins, secs = divmod(t, 60)
     timer = '{:02d}:{:02d}'.format(mins, secs)
     
-    # Update the label with the current time
+    # Have Timer as String
     label.config(text=timer)
     
+    # Keep substract 1 till there's nothing left and wait for 3 seconds to exit
     if t > 0:
-        # Call countdown function again after 1 second
         root.after(1000, countdown, t - 1)
     else:
-        # Once the countdown reaches 0, display a message
         label.config(text="TIMES UP")
+        root.after(1500, root.destroy)  
 
-# Create the tkinter window
-root = tk.Tk()
-root.title("Countdown Timer")
+# Widget Function
+def widget():
+    root = tk.Tk()
+    root.title("Timer")
+    
+    # Static widget
+    root.geometry("250x100")
+    root.resizable(False, False)
+    
+    # Costumize color and font
+    root.configure(bg='black')
+    label = tk.Label(root, font=('Helvetica', 35, 'bold'), fg='white', bg='black')
+    label.pack(pady=20)
+    
+    return root, label
+    
+# Process
+t = int(input("Enter Seconds: "))
 
-# Create a label to display the countdown
-label = tk.Label(root, font=('Helvetica', 48), fg='red')
-label.pack(pady=20)
-
-# Input time in seconds (this can be modified as needed)
-t = int(input("Enter the time in seconds: "))
-
-# Start the countdown
+# recall countdown and widget function
+root, label = widget()
 countdown(t)
 
-# Run the tkinter event loop
 root.mainloop()
+
+# You need tkinter install in this code
