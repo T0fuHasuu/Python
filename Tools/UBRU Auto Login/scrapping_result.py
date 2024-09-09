@@ -11,7 +11,7 @@ with open('users.json', 'r') as f:
     users = data['users']
 
 url = "https://reg.ubru.ac.th/login.aspx"
-path = "C:\\Users\\yuutd\\projects\\ProgramData\\chromedriver-win64\\chromedriver.exe"
+path = "pathtochromedriver"
 
 # Function to get subject names, sections, and grades for a user
 def get_subjects_sections_and_grades(driver):
