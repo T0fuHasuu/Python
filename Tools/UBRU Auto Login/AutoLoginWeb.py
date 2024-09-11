@@ -7,8 +7,11 @@ Required :
 _ ChromDriver 128 : https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.119/win64/chromedriver-win64.zip
 _ Chrome 
 _ Selenium : pip install selenium (Terminal)
-_ tensorflow : pip install tensorflow (Terminal)
+_ tensorflow : pip install tensorflow (Terminal) 
+bz
+
 """
+
 # Import 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -20,8 +23,8 @@ import subprocess
 import time
 
 # Define the Source
-username = ""
-password = ""
+username = "66122420126"
+password = "20062547"
 url = "https://reg.ubru.ac.th/login.aspx"
 
 # Check wifi state
@@ -88,7 +91,7 @@ def confirm_bt(driver):
 
 # Login bot
 def startBot(username, password, url):
-    path = "pathtochromedriver"
+    path = "C:\\Users\\yuutd\\projects\\ProgramData\\chromedriver-win64\\chromedriver.exe"
     service = Service(executable_path=path)
     driver = webdriver.Chrome(service=service)
     driver.get(url)
