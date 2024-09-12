@@ -9,7 +9,6 @@ _ Chrome
 _ Selenium : pip install selenium (Terminal)
 _ tensorflow : pip install tensorflow (Terminal) 
 This is for this time
-
 """
 
 # Import 
