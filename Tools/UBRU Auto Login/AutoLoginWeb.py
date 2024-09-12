@@ -8,7 +8,7 @@ _ ChromDriver 128 : https://storage.googleapis.com/chrome-for-testing-public/128
 _ Chrome 
 _ Selenium : pip install selenium (Terminal)
 _ tensorflow : pip install tensorflow (Terminal) 
-bz
+This is for this time
 
 """
 
