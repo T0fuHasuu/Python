@@ -4,14 +4,15 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import time
 import json
+import pandas as pd
 
 # Load users from a JSON file
-with open('users.json', 'r') as f:
+with open('std2566.json', 'r') as f:
     data = json.load(f)
     users = data['users']
 
 url = "https://reg.ubru.ac.th/login.aspx"
-path = "pathtochromedriver"
+path = "C:\\Users\\yuutd\\projects\\ProgramData\\chromedriver-win64\\chromedriver.exe"
 
 # Function to get subject names, sections, and grades for a user
 def get_subjects_sections_and_grades(driver):
@@ -46,6 +47,34 @@ def get_subjects_sections_and_grades(driver):
             break
             
     return subjects_data
+
+# Convert to xlsx file
+def ConvertDoc():
+    # Step 1: Load the JSON data from the file
+    with open('user_results.json', encoding='utf-8') as json_file:
+        user_results = json.load(json_file)  # Corrected here
+
+    # Step 2: Process the JSON data to extract name, ID, subjects, and grades
+    results = []
+    for student in user_results:
+        student_info = {
+            "Name": student["name"],
+            "ID": student["username"]
+        }
+        for subject_data in student["subjects_data"]:
+            subject, grade = subject_data.split(" : ")
+            student_info[subject] = grade
+        results.append(student_info)
+    
+    # Step 3: Convert the list of dictionaries into a DataFrame
+    df = pd.DataFrame(results)
+    
+    # Step 4: Fill NaN values with an empty string (optional)
+    df.fillna('', inplace=True)
+    
+    # Step 5: Save the DataFrame to an Excel file
+    df.to_excel('Result.xlsx', index=False)
+
 
 # List to store results for all users
 all_user_results = []
@@ -98,3 +127,5 @@ for user in users:
 # Write the results to a JSON file
 with open('user_results.json', 'w', encoding='utf-8') as f:
     json.dump(all_user_results, f, ensure_ascii=False, indent=4)
+
+ConvertDoc()
