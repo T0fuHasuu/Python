@@ -22,8 +22,8 @@ import subprocess
 import time
 
 # Define the Source
-username = "66122420126"
-password = "20062547"
+username = "username"
+password = "id"
 url = "https://reg.ubru.ac.th/login.aspx"
 
 # Check wifi state
@@ -90,7 +90,7 @@ def confirm_bt(driver):
 
 # Login bot
 def startBot(username, password, url):
-    path = "C:\\Users\\yuutd\\projects\\ProgramData\\chromedriver-win64\\chromedriver.exe"
+    path = "path"
     service = Service(executable_path=path)
     driver = webdriver.Chrome(service=service)
     driver.get(url)
