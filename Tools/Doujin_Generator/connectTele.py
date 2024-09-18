@@ -1,7 +1,7 @@
 from telegram.ext import Application
 
 # Bot Api Key
-api_token = "69"
+api_token = ""
 
 # Create app
 def create_application():
