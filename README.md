@@ -1,1 +1,1 @@
-I Will Be Mostly Update On Python .
+Code Which Surely Be Useful In One Way Or Another
