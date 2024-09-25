@@ -1,17 +1,17 @@
-# main.py
+# Import Neccesary Lib And Modules
 import pygame
 from scripts import render_scene, draw_exit_button, check_button_click, check_click, scenes, WHITE
 
 # Initialize Pygame
 pygame.init()
 
-# Set up the screen dimensions
+# Window Set Up 
 screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 
-# Set the title of the window
-pygame.display.set_caption("Slide Choice Game")
+# Title Window 
+pygame.display.set_caption("Wake me up from this nightmare")
 
 # Main loop
 current_scene = 0
@@ -20,10 +20,10 @@ running = True
 while running:
     screen.fill(WHITE)
     
-    # Render the current scene
+    # Render Screen
     render_scene(current_scene, screen, screen_width, screen_height)
     
-    # Draw exit button
+    # Call Exit Button
     draw_exit_button(screen)
     
     # Check for events
@@ -43,8 +43,8 @@ while running:
             if next_scene is not None:
                 current_scene = next_scene
 
-    # Update the display
+    # Update display
     pygame.display.flip()
 
-# Quit the game
+# Quit 
 pygame.quit()
